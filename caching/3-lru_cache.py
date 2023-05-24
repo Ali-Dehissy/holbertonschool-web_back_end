@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""LRU cache"""
+"""LRU CACHE : function creation"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
