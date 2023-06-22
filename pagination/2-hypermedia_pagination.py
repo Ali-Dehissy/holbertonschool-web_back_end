@@ -40,7 +40,7 @@ class Server:
             return []
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        """Returning pagination dictionnary""" 
+        """Returning pagination dictionnary"""
         page_data = self.get_page(page, page_size)
         total_data = len(self.dataset())
         total_pages = ceil(total_data / page_size)
