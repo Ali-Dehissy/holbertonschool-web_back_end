@@ -29,3 +29,4 @@ async function handleProfileSignup(firstName, lastName, fileName) {
 
   return [promise1, promise2];
 }
+export default handleProfileSignup;
