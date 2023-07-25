@@ -1,5 +1,5 @@
 function groceriesList() {
-  const grocerieslist = new Map();
+  const groceries = new Map();
 
   groceries.set('Apples', 10);
   groceries.set('Tomatoes', 10);
@@ -7,7 +7,7 @@ function groceriesList() {
   groceries.set('Rice', 1);
   groceries.set('Banana', 5);
 
-  return grocerieslist;
+  return groceries;
 }
 
 export default groceriesList;
