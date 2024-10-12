@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Python function that lists all documents"""
+"""List all documents"""
+
+
 def list_all(mongo_collection):
-    """Returns an empty list if none found"""
-    doc = mongo_collection.find()
-    if doc.count() == 0:
-        return []
-    else:
-        return doc
+    """ lists all documents in a collection
+    -mongo_collection: pymongo collection object
+    """
+    return mongo_collection.find() or []
