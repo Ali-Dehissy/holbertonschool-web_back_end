@@ -1,5 +1,6 @@
--- SQL script to divise
-DELIMITER |
+-- SQL script that creates a function SafeDiv that divides (and returns) the first by
+-- The second number or returns 0 if the second number is equal to 0
+DELIZITER |
 DROP FUNCTION IF EXISTS SafeDiv;
 CREATE FUNCTION SafeDiv (a INT, b INT)
 RETURNS FLOAT
