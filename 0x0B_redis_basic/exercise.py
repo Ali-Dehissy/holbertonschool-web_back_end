@@ -91,3 +91,4 @@ class Cache():
     def get_int(self, data):
         """Data to int"""
         return int(data)
+        
