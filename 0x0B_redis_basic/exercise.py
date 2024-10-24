@@ -59,6 +59,7 @@ def call_history(method: Callable) -> Callable:
 
 class Cache():
     """Cache class"""
+
     def __init__(self):
         """Intizializer"""
         self._redis = redis.Redis()
@@ -91,4 +92,3 @@ class Cache():
     def get_int(self, data):
         """Data to int"""
         return int(data)
-        
