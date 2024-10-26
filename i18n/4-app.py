@@ -1,44 +1,40 @@
 #!/usr/bin/env python3
-"""Route module for the API"""
+"""Local"""
 from flask import Flask, request, render_template
-from flask_babel import Babel
-from os import getenv
+from flask_babel import Babel, gettext
+
 
 app = Flask(__name__)
 babel = Babel(app)
 
 
 class Config(object):
-    """Babel configuration"""
-    LANGUAGES = ['en', 'fr']
-    # these are the inherent defaults just btw
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    """Class to configure available languages"""
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-# set the above class object as the configuration for the app
-app.config.from_object('4-app.Config')
-
-
-@app.route('/', methods=['GET'], strict_slashes=False)
-def index() -> str:
-    """Return index.html"""
-    return render_template('4-index.html')
+app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale() -> str:
-    """Supported languages"""
-    # check if there is a locale parameter/query string
-    if request.args.get('locale'):
-        locale = request.args.get('locale')
-        if locale in app.config['LANGUAGES']:
-            return locale
+def get_locale():
+    """Request.accept_languages"""
+    local_lang = request.args.get("locale")
+    supp_lang = app.config["LANGUAGES"]
+    if local_lang in supp_lang:
+        return local_lang
     else:
-        return request.accept_languages.best_match(app.config['LANGUAGES'])
+        return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
-if __name__ == "__main__":
-    host = getenv("API_HOST", "0.0.0.0")
-    port = getenv("API_PORT", "5000")
-    app.run(host=host, port=port)
+@app.route("/")
+def hello_world():
+    """Returns HTML"""
+    return render_template("4-index.html")
+
+
+def gettext(text):
+    """Translate text to the selected locale"""
+    return text
